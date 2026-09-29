@@ -174,6 +174,7 @@ export interface EnvironmentalEvent {
   title: string;
   location: string;
   city: string;
+  corridorId?: string;
   severity: RiskLevel;
   timestamp: string;
   description: string;

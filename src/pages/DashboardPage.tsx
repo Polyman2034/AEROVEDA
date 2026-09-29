@@ -48,6 +48,11 @@ export const DashboardPage: React.FC = () => {
   const handleSelectHotspot = (hotspot: Hotspot) => {
     setSelectedHotspotId(hotspot.id);
   };
+const [selectedCorridorId, setSelectedCorridorId] = useState<string | null>(null);
+
+const handleSelectCorridor = (corridor: { id: string }) => {
+  setSelectedCorridorId(corridor.id);
+};
 
   const handleViewIntelligence = (hotspotId: string) => {
     setSelectedHotspotId(hotspotId);
@@ -178,9 +183,10 @@ export const DashboardPage: React.FC = () => {
           <InteractiveIndiaMap
             hotspots={hotspots}
             sensors={sensors}
-            selectedHotspotId="hotspot-pune-corridor"
+            selectedHotspotId={undefined}
             onSelectHotspot={handleSelectHotspot}
             onViewIntelligence={handleViewIntelligence}
+            onSelectCorridor={handleSelectCorridor}
           />
         </div>
       </section>
@@ -197,8 +203,7 @@ export const DashboardPage: React.FC = () => {
           </div>
 
           <div className="divide-y divide-zinc-100">
-            {events.map((ev) => (
-              <div key={ev.id} className="py-3 first:pt-1 last:pb-0 space-y-1">
+{(selectedCorridorId ? events.filter((ev) => ev.corridorId === selectedCorridorId) : events).map((ev) => (              <div key={ev.id} className="py-3 first:pt-1 last:pb-0 space-y-1">
                 <div className="flex items-center justify-between gap-2">
                   <div className="text-xs font-medium text-zinc-900 truncate">
                     {ev.title}
