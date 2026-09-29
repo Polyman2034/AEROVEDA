@@ -1,20 +1,34 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# AEROVEDA
 
-# Run and deploy your AI Studio app
+AI-powered environmental intelligence platform for detecting, understanding, and predicting hyper-local air pollution events.
 
-This contains everything you need to run your app locally.
+## Overview
 
-View your app in AI Studio: https://ai.studio/apps/c7c0edeb-ad9c-49e6-9aaa-caa0294d0183
+AEROVEDA combines citizen reports, sensor data, satellite observations, and weather data to identify pollution hotspots, forecast air-quality changes, and support faster response.
+
+**Observe → Understand → Predict → Act**
+
+## Features
+
+- 🌍 Geospatial pollution intelligence
+- 📍 Hyper-local hotspot detection
+- 📈 Air-quality forecasting
+- 📸 Citizen pollution reports
+- 🚨 Alert and response management
+- 🤖 AI-based environmental analysis
+- 🌐 Federated city-level intelligence
+
+## Tech Stack
+
+- React + TypeScript
+- Vite
+- Tailwind CSS
+- Express.js
+- Node.js
+- Google Gemini API
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm install
+npm run dev
