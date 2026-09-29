@@ -1,0 +1,6 @@
+{
+  "name": "AEROVEDA — Environmental Intelligence Platform",
+  "description": "AI-powered federated climate intelligence platform designed to detect hyper-local pollution events, forecast air-quality spikes and coordinate environmental response across Indian cities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
