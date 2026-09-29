@@ -174,12 +174,31 @@ export const InteractiveIndiaMap: React.FC<InteractiveIndiaMapProps> = ({
       map.invalidateSize();
     }, 200);
 
-    const resizeObserver = new ResizeObserver(() => {
-      map.invalidateSize();
+const invalidateMapSize = () => {
+  map.invalidateSize({ pan: false });
+};
+
+map.whenReady(() => {
+  requestAnimationFrame(() => {
+    invalidateMapSize();
+
+    requestAnimationFrame(() => {
+      invalidateMapSize();
     });
-    if (mapContainerRef.current) {
-      resizeObserver.observe(mapContainerRef.current);
-    }
+  });
+});
+
+const timers = [100, 300, 700].map((delay) =>
+  window.setTimeout(invalidateMapSize, delay)
+);
+
+const resizeObserver = new ResizeObserver(() => {
+  invalidateMapSize();
+});
+
+if (mapContainerRef.current) {
+  resizeObserver.observe(mapContainerRef.current);
+}
 
     // Attach layer groups
     const { aqiLayer, hotspotsLayer, windLayer, corridorsLayer, sensorsLayer, reportsLayer, landmarksLayer } = layersRef.current;
@@ -193,7 +212,7 @@ export const InteractiveIndiaMap: React.FC<InteractiveIndiaMapProps> = ({
 
     // Clean up on unmount
     return () => {
-      clearTimeout(timer);
+      timers.forEach(clearTimeout);
       resizeObserver.disconnect();
       map.remove();
       mapInstanceRef.current = null;

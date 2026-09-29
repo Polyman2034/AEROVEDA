@@ -72,7 +72,7 @@ export const IntelligenceMapPage: React.FC = () => {
       {/* Grid: 8 Cols Map + 4 Cols Details Panel */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Map Viewport */}
-        <div className="lg:col-span-8 min-h-[580px]">
+        <div className="lg:col-span-8 h-[680px] min-h-0">
           <InteractiveIndiaMap
             hotspots={hotspots}
             sensors={sensors}
